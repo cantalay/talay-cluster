@@ -1,0 +1,4 @@
+server_ip               = "203.0.113.10"
+ssh_user                = "root"
+ssh_private_key_path    = "/secure/path/id_ed25519"
+kubeconfig_output_path = "./kubeconfig.yaml"
