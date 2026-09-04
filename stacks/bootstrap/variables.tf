@@ -31,11 +31,11 @@ variable "ssh_private_key_path" {
 
 variable "k3s_version" {
   type    = string
-  default = "v1.36.1+k3s1"
+  default = "v1.36.4+k3s1"
 
   validation {
     condition     = can(regex("^v[0-9]+\\.[0-9]+\\.[0-9]+\\+k3s[0-9]+$", var.k3s_version))
-    error_message = "k3s_version v1.36.1+k3s1 biçiminde olmalıdır."
+    error_message = "k3s_version v1.36.4+k3s1 biçiminde olmalıdır."
   }
 }
 

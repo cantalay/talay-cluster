@@ -1,11 +1,1 @@
-bucket       = "talay-terraform-state"
-key          = "cluster/bootstrap/terraform.tfstate"
-region       = "eu-central-1"
-use_lockfile = true
-encrypt      = true
-
-# S3-compatible servislerde gerekirse:
-# endpoints = { s3 = "https://s3.example.com" }
-# use_path_style              = true
-# skip_credentials_validation = true
-# skip_region_validation      = true
+path = "terraform.tfstate"

@@ -23,9 +23,11 @@ resource "terraform_data" "k3s_server" {
   provisioner "remote-exec" {
     inline = [
       "set -eu",
-      "if ! command -v k3s >/dev/null 2>&1 || ! k3s --version | head -n1 | grep -F '${var.k3s_version}' >/dev/null; then curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION='${var.k3s_version}' sh -s - server --disable=traefik --write-kubeconfig-mode=600 --tls-san='${var.server_ip}' --cluster-cidr='${var.cluster_cidr}' --service-cidr='${var.service_cidr}'; fi",
+      "if ! command -v k3s >/dev/null 2>&1 || ! k3s --version | head -n1 | grep -F '${var.k3s_version}' >/dev/null; then curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION='${var.k3s_version}' sh -s - server --disable=traefik --secrets-encryption --write-kubeconfig-mode=600 --tls-san='${var.server_ip}' --cluster-cidr='${var.cluster_cidr}' --service-cidr='${var.service_cidr}'; fi",
       "${local.sudo}systemctl enable --now k3s",
       "${local.sudo}k3s kubectl wait --for=condition=Ready node --all --timeout=300s",
+      "${local.sudo}k3s kubectl create namespace terraform-states --dry-run=client -o yaml | ${local.sudo}k3s kubectl apply -f -",
+      "${local.sudo}k3s kubectl label namespace terraform-states app.kubernetes.io/managed-by=terraform-bootstrap talay.io/tier=platform --overwrite",
     ]
   }
 
