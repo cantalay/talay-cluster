@@ -7,7 +7,7 @@ K3s makinesini kurar ve platformun paylaştığı Kubernetes temel nesnelerini o
 
 Bootstrap state'i zorunlu olarak yereldir; cluster'ı oluşturan state cluster'ın içinde tutulamaz. Base ve diğer bütün platform state'leri, bootstrap'ın oluşturduğu `terraform-states` namespace'indeki Kubernetes Secret'larında kilitlenerek tutulur. Böylece Kubernetes API erişilemezken bootstrap state'i yine yönetilebilir.
 
-Kubernetes backend state'leri K3s encryption-at-rest ile korunur; buna rağmen cluster kaybına karşı düzenli olarak şifreli cluster-dışı yedek alınmalıdır. Secret veya private key'i tfvars'a koymayın. `ssh_private_key_path` yalnızca dosya yoludur.
+Kubernetes backend state'leri K3s encryption-at-rest ile korunur; buna rağmen cluster kaybına karşı düzenli olarak şifreli cluster-dışı yedek alınmalıdır. Secret veya private key'i tfvars'a koymayın. `ssh_private_key_path` yalnızca dosya yoludur. `ssh_host_key` ise bağlantıdan önce bağımsız olarak doğrulanmış OpenSSH public host key'idir; aynı host ayrıca yerel `known_hosts` içinde bulunmalıdır.
 
 Yerel şifreli state yedeği ve kontrollü restore:
 

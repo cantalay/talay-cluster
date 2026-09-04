@@ -1,4 +1,5 @@
 server_ip               = "203.0.113.10"
 ssh_user                = "root"
 ssh_private_key_path    = "/secure/path/id_ed25519"
+ssh_host_key            = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIReplaceWithVerifiedHostKey"
 kubeconfig_output_path = "./kubeconfig.yaml"

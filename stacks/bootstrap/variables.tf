@@ -29,6 +29,16 @@ variable "ssh_private_key_path" {
   type        = string
 }
 
+variable "ssh_host_key" {
+  description = "Önceden doğrulanmış OpenSSH sunucu public key'i; fingerprint doğrulamasını zorunlu kılar."
+  type        = string
+
+  validation {
+    condition     = can(regex("^(ssh-ed25519|ecdsa-sha2-nistp(256|384|521)|ssh-rsa) [A-Za-z0-9+/=]+$", trimspace(var.ssh_host_key)))
+    error_message = "ssh_host_key, örneğin 'ssh-ed25519 AAAA...' biçiminde doğrulanmış bir public host key olmalıdır."
+  }
+}
+
 variable "k3s_version" {
   type    = string
   default = "v1.36.4+k3s1"
