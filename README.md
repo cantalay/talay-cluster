@@ -2,8 +2,8 @@
 
 K3s makinesini kurar ve platformun paylaştığı Kubernetes temel nesnelerini oluşturur.
 
-- `stacks/bootstrap`: SSH üzerinden exact K3s sürümünü kurar/yükseltir, Traefik'in K3s paketini kapatır, Secret encryption-at-rest'i açar, `terraform-states` namespace'ini hazırlar ve kubeconfig'i yerel güvenli dosyaya alır.
-- `stacks/base`: Ortak namespace'ler ile platform/workload priority class'larını oluşturur.
+- `stacks/bootstrap` -> `modules/k3s`: SSH üzerinden exact K3s sürümünü kurar/yükseltir, Traefik'in K3s paketini kapatır, Secret encryption-at-rest'i açar, `terraform-states` namespace'ini hazırlar ve kubeconfig'i yerel güvenli dosyaya alır.
+- `stacks/base` -> `modules/platform-base`: Ortak namespace'ler ile platform/workload priority class'larını oluşturur.
 
 Bootstrap state'i zorunlu olarak yereldir; cluster'ı oluşturan state cluster'ın içinde tutulamaz. Base ve diğer bütün platform state'leri, bootstrap'ın oluşturduğu `terraform-states` namespace'indeki Kubernetes Secret'larında kilitlenerek tutulur. Böylece Kubernetes API erişilemezken bootstrap state'i yine yönetilebilir.
 

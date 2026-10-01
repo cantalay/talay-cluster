@@ -1,11 +1,11 @@
 output "k3s_version" {
-  value = var.k3s_version
+  value = module.k3s.k3s_version
 }
 
 output "api_server" {
-  value = "https://${var.server_ip}:6443"
+  value = module.k3s.api_server
 }
 
 output "kubeconfig_path" {
-  value = abspath(var.kubeconfig_output_path)
+  value = module.k3s.kubeconfig_path
 }

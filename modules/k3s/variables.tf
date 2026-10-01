@@ -1,0 +1,9 @@
+variable "server_ip" { type = string }
+variable "ssh_user" { type = string }
+variable "ssh_port" { type = number }
+variable "ssh_private_key_path" { type = string }
+variable "ssh_host_key" { type = string }
+variable "k3s_version" { type = string }
+variable "cluster_cidr" { type = string }
+variable "service_cidr" { type = string }
+variable "kubeconfig_output_path" { type = string }
