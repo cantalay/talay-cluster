@@ -7,3 +7,4 @@
 !*.auto.tfvars.example
 kubeconfig*.yaml
 crash.log
+backend_override.tf
