@@ -1,1 +1,3 @@
-path = "terraform.tfstate"
+namespace     = "terraform-states"
+secret_suffix = "talay-cluster-bootstrap"
+config_path   = "kubeconfig.yaml"
